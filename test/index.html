@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center bg-light">my bank </h1>
+            <div class="col-4">
+                <div class="card bg-success">
+                    <h1>Total money:$ <span id="total-money"></span></h1>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card bg-secondary">
+                    <h1>Total Deposite:$ <span id="total-depostie"></span></h1>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card bg-success">
+                    <h1>Total withdrow:$ <span id="withdrow"></span></h1>
+                </div>
+            </div>
+        </div>
+        <label id="acctBalanceLbl"></label>
+        <div class="text-center">
+            <div id="input">
+                <h2>Deposit</h2>
+                <input type="text" id="userDeposit" required>
+                <button id="btnDeposit">Deposit</button>
+            </div>
+            <div id="input">
+                <h2>Withdraw</h2>
+                <input type="text" id="userwithdraw" required>
+                <button id="btnWithdraw">withdrow</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var acctBalanceLbl = document.getElementById("acctBalanceLbl");
+        var deposit =[];
+        var withdrow =[];
+        var totalBalance =0;
+        var userDeposit = document.getElementById("userDeposit");
+        var btnDeposit = document.getElementById("btnDeposit");
+        var withdraw = document.getElementById("userwithdrow");
+        var btnwithdraw = document.getElementById("btnWithdraw");
+        var totalmoney = document.getElementById("total-money");
+        var totaldepostie =document.getElementById("total-depostie");
+        var totalwithdrow =document.getElementById("withdrow");
+
+        var totaldepostiemoney =0;
+
+        btnDeposit.addEventListener('click', (e) => {
+            e.preventDefault()
+            var amount = userDeposit.value
+            var total = totalBalance+parseInt(amount)
+            totaldepostiemoney += parseInt(amount)
+            totalBalance = total
+            totalmoney.innerHTML = totalBalance
+            totaldepostie.innerHTML = totaldepostiemoney
+        });
+        var totalwithdrowmoney = 0;
+
+        btnWithdraw.addEventListener('click', (e) => {
+            e.preventDefault()
+            var amount = userwithdraw.value
+            var total = totalmoney-parseInt(amount)
+            totalmoney =total
+            totalmoney.innerHTML =totalBalance
+            totalwithdrow += parseInt(amount)
+            withdrow.innerHTML=totalwithdrow
+        });
+        
+    </script>
+</body>
+
+</html>
